@@ -3,9 +3,11 @@ import { createServiceClient } from '@/lib/supabase'
 import { sendReportEmail } from '@/lib/emails'
 import type { Order } from '@/types'
 
-function isAdmin(req: NextRequest) {
+function authMode(req: NextRequest): 'admin' | 'demo' | null {
   const token = req.headers.get('x-admin-token')
-  return token === process.env.ADMIN_PASSWORD
+  if (token === process.env.ADMIN_PASSWORD) return 'admin'
+  if (token === process.env.DEMO_PASSWORD) return 'demo'
+  return null
 }
 
 function reportToHtml(markdown: string): string {
@@ -22,9 +24,9 @@ function reportToHtml(markdown: string): string {
 }
 
 export async function POST(req: NextRequest) {
-  if (!isAdmin(req)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  const mode = authMode(req)
+  if (!mode) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (mode === 'demo') return NextResponse.json({ error: 'Mode démo — envoi désactivé.' }, { status: 403 })
 
   const { id } = await req.json()
   if (!id) {

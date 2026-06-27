@@ -38,6 +38,7 @@ const STATUS_LABELS: Record<string, string> = {
 export default function AdminPage() {
   const [password, setPassword] = useState('')
   const [authed, setAuthed] = useState(false)
+  const [isDemo, setIsDemo] = useState(false)
   const [orders, setOrders] = useState<Order[]>([])
   const [selected, setSelected] = useState<Order | null>(null)
   const [report, setReport] = useState('')
@@ -53,6 +54,7 @@ export default function AdminPage() {
     if (res.ok) {
       const data = await res.json()
       setOrders(data.orders)
+      if (data.demo) setIsDemo(true)
     }
   }, [password])
 
@@ -66,6 +68,9 @@ export default function AdminPage() {
       headers: { 'x-admin-token': password },
     })
     if (res.ok) {
+      const data = await res.json()
+      setOrders(data.orders)
+      if (data.demo) setIsDemo(true)
       setAuthed(true)
     } else {
       setMsg('Mot de passe incorrect.')
@@ -161,7 +166,12 @@ export default function AdminPage() {
       {/* Sidebar */}
       <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
         <div className="p-4 border-b border-gray-100">
-          <h1 className="font-bold text-lg">Admin · Carte Blanche</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="font-bold text-lg">Admin · Carte Blanche</h1>
+            {isDemo && (
+              <span className="text-xs font-semibold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">DÉMO</span>
+            )}
+          </div>
           <div className="flex gap-2 mt-3">
             {['all', 'processing', 'delivered'].map((f) => (
               <button
@@ -263,9 +273,9 @@ export default function AdminPage() {
                     <button
                       key={s}
                       onClick={() => updateStatus(selected.id, s)}
-                      disabled={saving || selected.order_status === s}
+                      disabled={saving || selected.order_status === s || isDemo}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        selected.order_status === s
+                        selected.order_status === s || isDemo
                           ? 'bg-gray-100 text-gray-400 cursor-default'
                           : 'bg-gray-900 text-white hover:bg-gray-700'
                       }`}
@@ -273,6 +283,7 @@ export default function AdminPage() {
                       Marquer "{STATUS_LABELS[s]}"
                     </button>
                   ))}
+                  {isDemo && <span className="text-xs text-gray-400 italic">Actions désactivées en mode démo</span>}
                 </div>
               </div>
 
@@ -286,21 +297,22 @@ export default function AdminPage() {
                   value={report}
                   onChange={(e) => setReport(e.target.value)}
                 />
-                <div className="flex gap-3 mt-4">
+                <div className="flex gap-3 mt-4 flex-wrap items-center">
                   <button
                     onClick={saveReport}
-                    disabled={saving}
+                    disabled={saving || isDemo}
                     className="px-5 py-2.5 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors disabled:opacity-50"
                   >
                     {saving ? 'Sauvegarde...' : 'Sauvegarder'}
                   </button>
                   <button
                     onClick={sendReport}
-                    disabled={sending || !report.trim()}
+                    disabled={sending || !report.trim() || isDemo}
                     className="px-5 py-2.5 bg-orange-500 text-white rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors disabled:opacity-50"
                   >
                     {sending ? 'Envoi...' : 'Envoyer par email'}
                   </button>
+                  {isDemo && <span className="text-xs text-gray-400 italic">Lecture seule en mode démo</span>}
                 </div>
               </div>
             </div>

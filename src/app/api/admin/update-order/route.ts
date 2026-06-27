@@ -1,15 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase'
 
-function isAdmin(req: NextRequest) {
+function authMode(req: NextRequest): 'admin' | 'demo' | null {
   const token = req.headers.get('x-admin-token')
-  return token === process.env.ADMIN_PASSWORD
+  if (token === process.env.ADMIN_PASSWORD) return 'admin'
+  if (token === process.env.DEMO_PASSWORD) return 'demo'
+  return null
 }
 
 export async function PATCH(req: NextRequest) {
-  if (!isAdmin(req)) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
+  const mode = authMode(req)
+  if (!mode) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (mode === 'demo') return NextResponse.json({ demo: true })
 
   const { id, order_status, report_content } = await req.json()
   if (!id) {
