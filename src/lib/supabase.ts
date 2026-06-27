@@ -1,9 +1,17 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Lazy init — avoid module-level crash when env vars absent at build time
+let _supabase: ReturnType<typeof createClient> | null = null
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export function getSupabase() {
+  if (!_supabase) {
+    _supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+  }
+  return _supabase
+}
 
 export function createServiceClient() {
   return createClient(

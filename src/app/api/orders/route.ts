@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createServiceClient } from '@/lib/supabase'
-import { stripe, PRICE_CENTS, CURRENCY } from '@/lib/stripe'
+import { getStripe, PRICE_CENTS, CURRENCY } from '@/lib/stripe'
 
 const schema = z.object({
   restaurant_name: z.string().min(1),
@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
 
-  const session = await stripe.checkout.sessions.create({
+  const session = await getStripe().checkout.sessions.create({
     payment_method_types: ['card'],
     mode: 'payment',
     line_items: [
