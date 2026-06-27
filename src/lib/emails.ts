@@ -1,7 +1,11 @@
 import { Resend } from 'resend'
 import type { Order } from '@/types'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+let _resend: Resend | null = null
+function getResend() {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY)
+  return _resend
+}
 const FROM = process.env.FROM_EMAIL ?? 'contact@carteblanche.fr'
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? ''
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://carteblanche.fr'
@@ -26,7 +30,7 @@ const GOAL_LABELS: Record<string, string> = {
 }
 
 export async function sendConfirmationEmail(order: Order) {
-  await resend.emails.send({
+  await getResend().emails.send({
     from: FROM,
     to: order.email,
     subject: `Votre analyse de carte est en préparation — ${order.restaurant_name}`,
@@ -62,7 +66,7 @@ export async function sendConfirmationEmail(order: Order) {
 export async function sendAdminNotification(order: Order) {
   if (!ADMIN_EMAIL) return
 
-  await resend.emails.send({
+  await getResend().emails.send({
     from: FROM,
     to: ADMIN_EMAIL,
     subject: `[Carte Blanche] Nouvelle commande — ${order.restaurant_name}`,
@@ -86,7 +90,7 @@ export async function sendAdminNotification(order: Order) {
 }
 
 export async function sendReportEmail(order: Order, reportHtml: string) {
-  await resend.emails.send({
+  await getResend().emails.send({
     from: FROM,
     to: order.email,
     subject: `Votre analyse de carte est prête — ${order.restaurant_name}`,
