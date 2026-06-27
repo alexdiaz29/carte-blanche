@@ -9,11 +9,11 @@ const STATS = [
 ]
 
 const PROBLEMS = [
-  'Votre carte fait 3 pages — le client se décourage avant de commander',
-  'Vos plats les plus rentables ne se voient pas, les moins rentables non plus d'ailleurs',
-  'Personne ne commande vos desserts parce qu'ils arrivent trop tard dans la lecture',
-  'Votre formule du midi est introuvable en moins de 5 secondes',
-  'Deux plats similaires avec 7 € d'écart sans raison visible — ça crée de la méfiance',
+  "Votre carte fait 3 pages — le client se décourage avant de commander",
+  "Vos plats les plus rentables ne se voient pas, les moins rentables non plus d'ailleurs",
+  "Personne ne commande vos desserts parce qu'ils arrivent trop tard dans la lecture",
+  "Votre formule du midi est introuvable en moins de 5 secondes",
+  "Deux plats similaires avec 7 € d'écart sans raison visible — ça crée de la méfiance",
   'Les intitulés ne font pas envie : "Poulet rôti" vs "Poulet fermier rôti, jus maison"',
 ]
 
