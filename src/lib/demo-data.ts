@@ -10,9 +10,9 @@ export const DEMO_ORDERS: Order[] = [
     phone: '06 12 34 56 78',
     establishment_type: 'brasserie',
     main_goal: 'augmenter_ticket_moyen',
-    menu_url: null,
-    file_url: null,
-    comment: 'Notre carte a été refaite il y a 6 mois mais le ticket moyen n'a pas bougé. On aimerait aussi mieux vendre nos desserts maison.',
+    menu_url: undefined,
+    file_url: undefined,
+    comment: "Notre carte a été refaite il y a 6 mois mais le ticket moyen n'a pas bougé. On aimerait aussi mieux vendre nos desserts maison.",
     payment_status: 'paid',
     order_status: 'delivered',
     delivered_at: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
@@ -113,11 +113,11 @@ C'est votre levier de conversion le plus simple. Exemple de réécriture :
     establishment_type: 'pizzeria',
     main_goal: 'simplifier_carte',
     menu_url: 'https://pizzanapoli.fr/carte',
-    file_url: null,
+    file_url: undefined,
     comment: 'On a trop de pizzas et les clients mettent 10 minutes à choisir. Les extras ne se vendent pas non plus.',
     payment_status: 'paid',
     order_status: 'processing',
-    delivered_at: null,
+    delivered_at: undefined,
     report_content: `# Analyse de carte — Pizza Napoli Express
 
 ---

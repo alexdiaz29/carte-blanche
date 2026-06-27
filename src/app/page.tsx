@@ -51,7 +51,7 @@ const DELIVERABLES = [
   { icon: '💰', text: 'Conseils pricing et ancrage psychologique' },
   { icon: '👁', text: 'Suggestions de mise en page et hiérarchie' },
   { icon: '🏆', text: 'Identification des plats à mettre en avant' },
-  { icon: '📋', text: 'Plan d'actions priorisées par impact' },
+  { icon: '📋', text: "Plan d'actions priorisées par impact" },
 ]
 
 const FAQ = [
