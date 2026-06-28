@@ -13,44 +13,139 @@ export interface AnalysisReport {
 
 const MOCK_REPORT: ReportSection[] = [
   {
-    title: '1. Diagnostic global',
-    content: `Votre carte présente un potentiel commercial réel, mais souffre de plusieurs freins à la décision d'achat. La structure actuelle demande trop d'effort cognitif au client : trop de choix, des catégories peu hiérarchisées, et des intitulés génériques qui n'appuient pas la valeur perçue. Les plats les plus rentables ne sont pas mis en avant. La carte fonctionne comme une liste de stock plutôt que comme un outil de vente.`,
+    title: '1. Verdict en 5 lignes',
+    content: `Votre carte ne guide pas suffisamment le client vers les choix les plus rémunérateurs. Elle présente les plats, mais ne les vend pas. Le client compare les prix au lieu de se laisser porter par l'envie. Le levier prioritaire est de mettre en scène vos plats forts et vos desserts, et de réduire le nombre de références pour simplifier la décision. L'action la plus importante à faire en premier : identifier votre plat signature et lui donner une place et une description qui lui correspondent.`,
   },
   {
-    title: '2. Points forts',
-    content: `• Offre complète couvrant différents profils de clients\n• Présence de formules midi, bon levier de fidélisation\n• Gamme de prix cohérente avec le positionnement\n• Quelques intitulés évocateurs à conserver et développer`,
+    title: '2. Ce qui bloque le ticket moyen',
+    content: `### Problème 1 — Trop de choix, pas de hiérarchie
+
+**Constat :** Plusieurs catégories dépassent 7 références sans sous-groupes ni mise en avant. Le client doit tout lire pour décider.
+**Impact :** Paralysie du choix. Le client se replie sur ce qu'il connaît ou sur le moins cher.
+**Correction recommandée :** Réduire à 5-7 items par catégorie. Sans données de vente, tester la suppression temporaire des références les moins identitaires.
+
+### Problème 2 — Desserts sous-valorisés
+
+**Constat :** Les desserts sont listés sans description. Aucun élément ne justifie le prix ni ne donne envie.
+**Impact :** Taux de prise des desserts structurellement bas. Le client perçoit 6-7 € comme cher pour un inconnu.
+**Correction recommandée :** Ajouter une ligne descriptive sous chaque dessert avec les éléments réellement présents. Ajouter la mention "maison" uniquement si c'est exact.
+
+### Problème 3 — Aucun plat signature identifiable
+
+**Constat :** Tous les plats ont le même poids visuel. Rien ne se distingue comme votre référence, votre fierté, votre identité.
+**Impact :** Le client n'a pas de point d'ancrage. Il choisit au prix plutôt qu'à l'envie.
+**Correction recommandée :** Choisir 1 plat à mettre en avant avec description courte et position prioritaire dans sa catégorie.
+
+### Problème 4 — Ventes additionnelles absentes
+
+**Constat :** Pas de suggestion de suppléments, d'accompagnements ou d'accords visibles sur la carte.
+**Impact :** Le client ne pense pas à ajouter — personne ne lui propose.
+**Correction recommandée :** Ajouter un encart simple avec 2-3 suggestions d'extras ou d'accompagnements, positionné après les plats principaux.`,
   },
   {
-    title: '3. Problèmes identifiés',
-    content: `• **Carte trop longue** : au-delà de 7 choix par catégorie, le client est paralysé et commande ce qu'il connaît déjà\n• **Catégories peu lisibles** : pas de hiérarchie visuelle claire entre les sections\n• **Plats rentables pas mis en avant** : les marges fortes sont noyées dans la masse\n• **Intitulés trop génériques** : "Salade mixte", "Plat du jour" — aucune valeur perçue\n• **Manque de plat signature** : rien qui différencie votre établissement\n• **Ventes additionnelles absentes** : pas de suggestion de suppléments ou d'accompagnements\n• **Descriptions trop courtes ou absentes** : le client ne sait pas ce qu'il achète\n• **Prix sans stratégie d'ancrage** : les prix premium ne sont pas positionnés pour sembler raisonnables`,
+    title: '3. Les changements prêts à copier-coller',
+    content: `**Important : n'utiliser les versions enrichies qu'avec les ingrédients réellement présents dans vos recettes.**
+
+| Élément actuel | Nouvelle version recommandée | Pourquoi |
+|---|---|---|
+| Salade verte | Salade du moment *(à compléter avec les éléments réels)* | Plus vivant, plus identitaire |
+| Plat du jour | Suggestion du jour — demandez à votre serveur | Crée de l'anticipation et une interaction |
+| Dessert du jour | Dessert maison du moment *(à utiliser si fait ici)* | "Maison" justifie le prix sans inventer |
+| Steak / Viande | *(Nom) — ajouter le grammage et la cuisson proposée* | Concret, rassure, valorise |
+| Formule midi | Formule du midi — Entrée + Plat ou Plat + Dessert *(à adapter)* | Plus clair, plus rapide à lire |
+
+Pour chaque plat de votre carte que vous souhaitez valoriser : ajoutez le type exact de produit, le mode de cuisson et l'accompagnement réel. Ce sont les 3 éléments qui font passer un intitulé neutre à un intitulé qui vend.`,
   },
   {
-    title: '4. Recommandations prioritaires',
-    content: `**Impact fort / Facile à faire (cette semaine)**\n• Réduire chaque catégorie à 5-7 items maximum — supprimer ou regrouper\n• Ajouter une étoile ★ ou un encadré visuel sur 2-3 plats "coups de cœur"\n• Réécrire 5 intitulés clés (voir section 8)\n• Afficher le plat signature en premier dans sa catégorie\n\n**Impact fort / Demande un peu plus de travail**\n• Restructurer l'ordre des catégories : Apéritif → Entrées → Plats → Desserts → Boissons\n• Créer une formule "entrée + plat + dessert" à prix attractif\n• Ajouter 2-3 suggestions de suppléments (fromage, sauce, accompagnement)\n\n**Impact moyen**\n• Améliorer les descriptions des plats premium (2-3 lignes max)\n• Ajouter des labels visuels : "Maison", "Du terroir", "Végétarien"`,
+    title: '4. Plat signature recommandé',
+    content: `**Plat recommandé :** Le plat au prix le plus élevé de votre carte — ou celui qui vous représente le mieux.
+**Pourquoi :** Un plat premium bien décrit en tête de catégorie crée un ancrage. Les autres plats semblent alors accessibles par comparaison.
+**Mise en avant :** Première position dans sa catégorie + encadré léger ou symbole ✦ + description courte de 1 à 2 lignes.
+**Texte prêt à intégrer (à adapter avec vos ingrédients réels) :**
+
+> ✦ **[Nom du plat]** — [décrire avec les éléments réels : type de produit, cuisson, accompagnement]. Notre référence.
+
+Si aucun plat ne se démarque suffisamment, créez une "Suggestion du chef" hebdomadaire — elle peut être écrite sur un tableau ou annoncée verbalement, sans être sur la carte imprimée.`,
   },
   {
-    title: '5. Recommandations par catégorie',
-    content: `**Entrées**\nRéduire à 5 entrées maximum. Mettre en avant la plus rentable avec une courte description. Ajouter un tarif planche/partage si pertinent.\n\n**Plats**\nIdentifier vos 2-3 plats à plus forte marge et les positionner en premier et/ou en encadré. Ne garder que 6-8 plats. Supprimer les doublons (ex : deux plats au poulet très proches).\n\n**Desserts**\nSouvent sous-exploités. Ajouter une description courte et appétissante. Proposer un dessert du jour simple à valoriser verbalement.\n\n**Boissons**\nPenser à proposer des suggestions d'accords (vin/plat). Un vin "coup de cœur du chef" au verre augmente le ticket moyen.\n\n**Formules/Menus**\nLes formules doivent être visuellement séparées et en tête de carte. Le client doit trouver la formule en 3 secondes.`,
+    title: '5. Desserts : plan pour vendre plus',
+    content: `Les desserts sont presque toujours le levier le plus rapide à activer — et le plus négligé.
+
+**Actions immédiates :**
+
+1. Ajouter le titre de section : **Nos desserts** *(+ "maison" ou "faits ici" uniquement si c'est exact)*
+2. Écrire 1 ligne descriptive sous chaque dessert — avec les éléments réels uniquement
+3. Placer le dessert le plus différenciant en premier
+4. Ajouter un encart en bas de section :
+   > *Notre conseil : dessert + café — [prix] € / Demandez à votre serveur*
+
+**Format de description recommandé :**
+- *[Nom du dessert]* — [texture ou température si distinctif], [élément clé réel], [1 adjectif concret]
+- Exemple de format (contenu à remplacer par vos ingrédients réels) : *"Tarte du moment — servie tiède, [garniture réelle]"*`,
   },
   {
-    title: '6. Pricing et perception prix',
-    content: `• **Arrondis psychologiques** : préférer 14,50 € à 14,00 € (perçu comme plus précis/juste) ou 15 € (simplifié)\n• **Prix d'appel** : avoir un plat entrée à prix accessible pour ne pas effrayer à la première lecture\n• **Effet d'ancrage** : placer un plat premium en premier ou en évidence rend les autres prix plus acceptables\n• **Écarts incohérents** : si deux plats très proches ont 6 € d'écart sans justification perçue, cela crée de la méfiance\n• **Formules** : l'économie doit être visible (afficher "Économisez 4 €" ou "au lieu de 32 €")`,
+    title: '6. Actions concrètes pour augmenter le ticket moyen',
+    content: `| Action | Exemple précis | Effort | Impact attendu |
+|---|---|---|---|
+| Réécrire les intitulés desserts + ajouter "maison" si exact | Une ligne descriptive par dessert | 30 min | Hausse du taux de prise desserts |
+| Mettre en avant 1 plat signature | Encadré ✦ + description courte en première position | 20 min | Ancrage prix, décision plus rapide |
+| Créer un encart suppléments / extras visibles | Après la section plats principaux | 15 min | Hausse directe du ticket par table |
+| Remonter la formule en tête de carte si elle existe | Encadré visible avant les entrées | 15 min | Plus de formules commandées |
+| Briefer l'équipe sur 3-5 phrases de vente active | Voir section 9 | 30 min (briefing) | Vente additionnelle desserts et extras |`,
   },
   {
-    title: '7. Mise en page et lisibilité',
-    content: `• **Ordre des rubriques** : toujours aller du début au repas (apéritif → entrée → plat → dessert → boisson), pas l'inverse\n• **Hiérarchie visuelle** : titres de catégorie plus grands, sous-catégories différenciées, prix bien alignés\n• **Réduction du bruit** : supprimer les logos, encadrés décoratifs inutiles, couleurs qui fatiguent la lecture\n• **Mise en avant** : utiliser une boîte colorée ou un filet sur le plat signature ou la formule phare\n• **Taille de police** : minimum 10pt en impression, minimum 14px sur digital\n• **Pictos/Labels** : V (végétarien), M (maison), ★ (recommandé) — max 3 labels pour ne pas surcharger`,
+    title: '7. Pricing et présentation des prix',
+    content: `• Si les prix sont alignés dans une colonne à droite, le client les compare verticalement avant de lire les noms. Intégrez les prix à la fin de la description — moins anxiogène, plus naturel à la lecture.
+• Vérifiez les arrondis : les prix en virgule-cinquante (14,50 €) semblent peu soignés sur des plats à forte valeur perçue. Préférez 14 € ou 15 €.
+• Un écart de plus de 5 € entre deux plats comparables sans justification visible dans la description crée de la méfiance. Soit vous ajoutez une description qui explique l'écart, soit vous réévaluez.
+• La formule doit afficher clairement l'économie réalisée si elle existe : *"au lieu de [X] €, formule à [Y] €"*.
+• N'ajoutez pas de plat premium artificiel pour créer un ancrage si votre positionnement global ne le supporte pas. L'ancrage doit être crédible.`,
   },
   {
-    title: '8. Wording commercial',
-    content: `Exemples de réécriture (sans changer les recettes) :\n\n❌ "Salade verte" → ✅ "Salade du marché, vinaigrette maison"\n❌ "Poulet rôti" → ✅ "Poulet fermier rôti, jus de cuisson, légumes de saison"\n❌ "Dessert du jour" → ✅ "Surprise du chef — demandez à votre serveur"\n❌ "Steak haché" → ✅ "Steak haché façon maison, 180g, cuit à votre goût"\n❌ "Formule midi" → ✅ "Formule Express — Entrée + Plat ou Plat + Dessert, servi en 20 min"\n\nPrincipe : décrire ce qui est là, pas ce qui n'est pas là. Évoquer le soin, la fraîcheur, la générosité.`,
+    title: '8. Nouvelle organisation recommandée de la carte',
+    content: `Structure recommandée (à adapter à votre établissement) :
+
+1. **Formule / Menu du moment** ← encadré visible, en premier si vous en avez une
+2. **Entrées** ← maximum 5, la plus forte en premier
+3. **Plats** ← maximum 7-8, plat signature encadré en tête
+4. **Desserts** ← avec descriptions, le plus différenciant en premier
+5. **Boissons** ← avec suggestion d'accord si pertinent
+
+**Ce qui doit être encadré :** formule + plat signature.
+**Ce qui doit être réduit :** chaque catégorie au-dessus de 7 références.
+**Ce qui doit être déplacé :** formule si en bas de carte, suppléments si cachés après les boissons.
+**Ce qui doit être regroupé :** les références trop proches ou en doublon implicite.`,
   },
   {
-    title: '9. Actions concrètes à faire cette semaine',
-    content: `1. Réduire la carte à 5-7 items par catégorie\n2. Identifier vos 2 plats les plus rentables → les mettre en premier + les encadrer\n3. Réécrire 5 intitulés en ajoutant un adjectif concret (maison, frais, du jour, fermier…)\n4. Créer ou mettre en avant une formule visible dès la première lecture\n5. Ajouter un plat "coup de cœur du chef" clairement identifié\n6. Vérifier la cohérence des prix : aucun écart injustifié de plus de 5 € entre plats comparables`,
+    title: '9. Phrases serveur prêtes à utiliser',
+    content: `• *"Notre plat le plus demandé en ce moment, c'est [nom du plat signature] — je vous le conseille."*
+• *"Si vous hésitez, dites-moi ce que vous aimez, je vous aide à choisir."*
+• *"On a un dessert qui fonctionne très bien après ce plat — vous voulez que je vous en parle ?"*
+• *"Vous prenez un café ? On peut y ajouter un dessert maison pour [prix] €."*
+• *"La formule du midi inclut le dessert — c'est [prix] € au total, ça vous va ?"*`,
   },
   {
-    title: '10. Synthèse finale',
-    content: `Votre carte a les ingrédients d'une bonne offre. Le travail à faire n'est pas de changer vos plats, c'est de mieux les vendre. En raccourcissant la carte, en mettant en avant les bons plats et en réécrivant quelques intitulés, vous pouvez augmenter votre ticket moyen sans toucher à votre cuisine. Ces changements peuvent être appliqués en une semaine pour un coût quasi nul. Commencez par les 6 actions listées ci-dessus — elles auront le plus d'impact immédiat.`,
+    title: '10. Plan d\'action sur 7 jours',
+    content: `| Jour | Action | Objectif |
+|---|---|---|
+| Jour 1 | Réécrire les intitulés desserts avec description courte | Augmenter le taux de prise desserts |
+| Jour 2 | Identifier et mettre en avant le plat signature | Ancrage prix, décision plus rapide |
+| Jour 3 | Réduire les catégories au-dessus de 7 références *(test temporaire sans données de vente)* | Moins de paralysie du choix |
+| Jour 4 | Créer ou déplacer l'encart formule en tête de carte | Capter les clients formule dès la lecture |
+| Jour 5 | Briefer l'équipe en salle sur les 5 phrases de vente | Activer la vente additionnelle |
+| Jour 6 | Mettre en service la nouvelle version de la carte | Premier test réel |
+| Jour 7 | Observer : desserts vendus ? Plat signature commandé ? Ticket moyen en hausse ? | Mesurer et ajuster |`,
+  },
+  {
+    title: '11. Résumé final',
+    content: `**Les 3 changements prioritaires :**
+1. Écrire une description courte sur chaque dessert *(avec vos ingrédients réels)* + mention "maison" si applicable
+2. Identifier et mettre en avant un plat signature avec description et position prioritaire
+3. Réduire les catégories au-dessus de 7 références — simplifier, c'est vendre mieux
+
+**Ce que vous pouvez attendre :** un service plus fluide, des clients qui décident plus vite, et un taux de commande des desserts structurellement plus élevé. Sans données de vente actuelles, il est impossible de quantifier précisément — mais ces changements agissent directement sur le comportement d'achat.
+
+**La première action à faire dès demain :** ouvrez votre carte, trouvez la section desserts, et ajoutez une ligne descriptive sous chaque dessert. 30 minutes. C'est le changement le plus rapide avec le plus d'impact.`,
   },
 ]
 
@@ -107,31 +202,39 @@ async function generateWithOpenAI(order: Partial<Order>): Promise<AnalysisReport
 }
 
 function buildPrompt(order: Partial<Order>): string {
-  return `Tu es un expert en menu engineering pour les restaurants.
+  return `Tu es un expert senior en menu engineering, restauration et optimisation du ticket moyen. Tu produis un livrable ultra-concret pour un restaurateur qui a payé 50 € pour des recommandations actionnables.
 
-Analyse la carte du restaurant suivant et rédige un rapport complet et actionnable.
+RÈGLES CRITIQUES (à respecter absolument) :
+1. Ne jamais inventer d'ingrédients, labels, origines, marques ("Valrhona", "maturé 30 jours", "fermier", "bio", "local") sauf si explicitement visible dans les informations fournies.
+2. Si une amélioration nécessite une hypothèse, l'indiquer clairement : "si c'est exact", "à confirmer", "à adapter selon vos produits".
+3. Ne jamais dire "supprimez les plats les moins vendus" — aucune donnée de vente n'est disponible. Dire : "sans données de vente, testez la suppression temporaire de…"
+4. Chaque recommandation doit être accompagnée d'une action concrète immédiatement applicable.
+5. Être direct et utile. Pas de blabla marketing. Pas de phrases génériques comme "votre carte présente une structure solide".
+6. Ne pas surpromettre une hausse chiffrée du ticket moyen sans données.
 
-**Restaurant** : ${order.restaurant_name}
-**Type d'établissement** : ${order.establishment_type}
-**Objectif principal du restaurateur** : ${order.main_goal}
-**Commentaire** : ${order.comment ?? 'Aucun'}
-**URL du menu** : ${order.menu_url ?? 'Non fournie'}
+CONTEXTE DU RESTAURANT :
+- Nom : ${order.restaurant_name}
+- Type : ${order.establishment_type}
+- Objectif principal : ${order.main_goal}
+- Commentaire du restaurateur : ${order.comment ?? 'Aucun'}
+- URL du menu : ${order.menu_url ?? 'Non fournie'}
 
-Rédige le rapport avec ces 10 sections exactes :
-1. Diagnostic global
-2. Points forts
-3. Problèmes identifiés
-4. Recommandations prioritaires
-5. Recommandations par catégorie
-6. Pricing et perception prix
-7. Mise en page et lisibilité
-8. Wording commercial
-9. Actions concrètes à faire cette semaine
-10. Synthèse finale
+Rédige le rapport avec ces 11 sections exactes :
 
-Sois concret, terrain, sans jargon. Ne promets pas de résultats chiffrés garantis. Ne réinvente pas les recettes. Focus sur la lisibilité, la mise en avant des plats rentables, le wording et la structure.
+1. Verdict en 5 lignes — diagnostic direct : principal frein, levier prioritaire, clarté de la carte, potentiel d'amélioration rapide, action la plus importante en premier
+2. Ce qui bloque le ticket moyen — 3 à 5 problèmes concrets avec : constat / impact / correction recommandée
+3. Les changements prêts à copier-coller — tableau Markdown : Élément actuel | Nouvelle version recommandée | Pourquoi. Minimum 3 plats, 3 desserts, 1 entrée. Ne réécrire que ce qui est réellement présent. Marquer "à confirmer" si hypothèse.
+4. Plat signature recommandé — 1 candidat avec : plat / pourquoi / mise en avant / texte exact à intégrer (adapté aux infos disponibles)
+5. Desserts : plan pour vendre plus — descriptions à réécrire, dessert à mettre en avant, textes prêts à intégrer, suggestion café+dessert
+6. Actions concrètes pour augmenter le ticket moyen — tableau : Action | Exemple précis | Effort | Impact attendu
+7. Pricing et présentation des prix — analyse des prix existants, recommandations adaptées au positionnement réel
+8. Nouvelle organisation recommandée de la carte — structure améliorée avec ce qui doit être encadré, déplacé, réduit, regroupé
+9. Phrases serveur prêtes à utiliser — 3 à 5 phrases naturelles et courtes adaptées au restaurant
+10. Plan d'action sur 7 jours — tableau : Jour | Action | Objectif
+11. Résumé final — 3 changements prioritaires, gain attendu qualitatif, première action à faire dès demain
 
-Format de réponse : JSON avec structure { sections: [{title: string, content: string}] }`
+Format de réponse : JSON avec structure { sections: [{title: string, content: string}] }
+Le contenu de chaque section doit être en Markdown.`
 }
 
 function parseAiResponse(text: string): AnalysisReport {
