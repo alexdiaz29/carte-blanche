@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 interface Order {
   id: string
@@ -46,6 +47,7 @@ export default function AdminPage() {
   const [sending, setSending] = useState(false)
   const [msg, setMsg] = useState('')
   const [filter, setFilter] = useState('all')
+  const [reportView, setReportView] = useState<'edit' | 'preview'>('preview')
 
   const fetchOrders = useCallback(async () => {
     const res = await fetch('/api/admin/orders', {
@@ -289,14 +291,49 @@ export default function AdminPage() {
 
               {/* Rapport */}
               <div className="bg-white rounded-xl border border-gray-200 p-6">
-                <h3 className="font-semibold mb-4">Rapport d'analyse</h3>
-                <textarea
-                  className="w-full border border-gray-200 rounded-lg p-4 text-sm font-mono resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
-                  rows={20}
-                  placeholder="Collez ici le rapport d'analyse (Markdown)..."
-                  value={report}
-                  onChange={(e) => setReport(e.target.value)}
-                />
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold">Rapport d'analyse</h3>
+                  <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
+                    {(['preview', 'edit'] as const).map((v) => (
+                      <button
+                        key={v}
+                        onClick={() => setReportView(v)}
+                        className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${reportView === v ? 'bg-white shadow-sm text-gray-900' : 'text-gray-500 hover:text-gray-700'}`}
+                      >
+                        {v === 'preview' ? 'Aperçu' : 'Éditer'}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {reportView === 'preview' ? (
+                  <div className="min-h-[400px] border border-gray-100 rounded-lg p-5 prose prose-sm prose-gray max-w-none
+                    prose-headings:font-bold prose-headings:text-gray-900
+                    prose-h1:text-xl prose-h1:border-b prose-h1:border-gray-200 prose-h1:pb-3 prose-h1:mb-4
+                    prose-h2:text-base prose-h2:mt-6 prose-h2:mb-2
+                    prose-h3:text-sm prose-h3:mt-4 prose-h3:mb-1 prose-h3:text-gray-700
+                    prose-p:text-gray-600 prose-p:leading-relaxed prose-p:text-sm
+                    prose-li:text-gray-600 prose-li:text-sm
+                    prose-strong:text-gray-900
+                    prose-table:text-sm prose-td:py-2 prose-td:px-3 prose-th:py-2 prose-th:px-3
+                    prose-table:border prose-td:border prose-th:border prose-th:bg-gray-50
+                    prose-hr:my-6 prose-hr:border-gray-200">
+                    {report ? (
+                      <ReactMarkdown>{report}</ReactMarkdown>
+                    ) : (
+                      <p className="text-gray-300 italic text-sm">Aucun rapport rédigé pour l'instant.</p>
+                    )}
+                  </div>
+                ) : (
+                  <textarea
+                    className="w-full border border-gray-200 rounded-lg p-4 text-sm font-mono resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    rows={24}
+                    placeholder="Collez ici le rapport d'analyse (Markdown)..."
+                    value={report}
+                    onChange={(e) => setReport(e.target.value)}
+                  />
+                )}
+
                 <div className="flex gap-3 mt-4 flex-wrap items-center">
                   <button
                     onClick={saveReport}
