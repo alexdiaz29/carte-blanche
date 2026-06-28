@@ -355,4 +355,182 @@ Ce qui doit être **déplacé** : suppléments de bas de page vers après la lis
 
 *Rapport Carte Blanche — En cours de finalisation*`,
   },
+  {
+    id: 'demo-order-3',
+    created_at: new Date(Date.now() - 1000 * 60 * 60 * 12).toISOString(),
+    restaurant_name: 'Crêperie du Bourg',
+    contact_name: 'Isabelle Morvan',
+    email: 'isabelle@creperie-du-bourg.fr',
+    phone: '06 88 12 45 63',
+    establishment_type: 'restaurant',
+    main_goal: 'augmenter_ticket_moyen',
+    menu_url: undefined,
+    file_url: undefined,
+    comment: "On a beaucoup de choix dans les classiques mais le ticket moyen stagne. Les clients ne prennent pas souvent nos spécialités alors qu'elles sont meilleures.",
+    payment_status: 'paid',
+    order_status: 'processing',
+    delivered_at: undefined,
+    report_content: `# Analyse de carte — Crêperie du Bourg
+
+---
+
+## 1. Verdict en 5 lignes
+
+La carte a de vrais produits différenciants — les galettes saumon fumé à 9 € — mais elle ne les met pas en avant. La section Spécialités arrive en dernier alors qu'elle contient vos galettes les plus identitaires et les plus rentables. La section Classiques commence par une galette BEURRE à 2,20 € qui tire la perception prix vers le bas dès la première ligne lue. L'introduction des Spécialités décrit des ingrédients qui ne correspondent pas à la plupart des galettes de cette section — c'est la seule erreur factuelle visible sur la carte, et elle doit être corrigée en priorité. Le levier prioritaire : remonter L'Écossaise et La Norvégienne en tête de carte et créer un encart suppléments visible.
+
+---
+
+## 2. Ce qui bloque le ticket moyen
+
+### Problème 1 — Les galettes premium sont cachées en bas de carte
+
+**Constat :** L'Écossaise (9 €) et La Norvégienne (9 €) — vos deux références les plus chères et les plus différenciantes — arrivent en dernière position de la section Spécialités, après 12 autres galettes. Le client a souvent déjà fait son choix avant de les atteindre.
+**Impact :** Vos galettes les plus rentables sont les moins vues. Résultat : le client commande en milieu de gamme par défaut.
+**Correction recommandée :** Remonter L'Écossaise en première position des Spécialités avec un encadré et la mention ✦. C'est votre galette signature — elle doit être la première lue.
+
+### Problème 2 — BEURRE à 2,20 € en première ligne des Classiques
+
+**Constat :** Le tout premier prix visible sur la carte est 2,20 €. C'est la galette BEURRE seule, sans garniture.
+**Impact :** Ce prix ancre la perception de l'ensemble de la carte. Le client qui commence à 2,20 € percevra 9 € comme très cher, même pour un saumon fumé. Cette référence n'a quasiment aucun intérêt commercial pour vous.
+**Correction recommandée :** Retirer la galette BEURRE des Classiques, ou la déplacer en toute fin de liste avec la mention "Pour les plus petits — 2,20 €". Elle ne doit pas être la première impression.
+
+### Problème 3 — L'introduction des Spécialités est inexacte
+
+**Constat :** La carte indique : *"Toutes nos spécialités sont cuisinées avec : poireaux frais, champignons, saumon, crème, poivre."* Or LA TOMAÏLLETTE = fromage + tomates. LA BRESTOISE = bacon + pomme. LA BERGÈRE = fromage de chèvre + salade. Ces ingrédients ne sont pas présents dans la majorité des spécialités.
+**Impact :** C'est une fausse promesse lisible par tous les clients — notamment ceux qui ont des allergies. Cela nuit à la crédibilité de la carte.
+**Correction recommandée :** Supprimer cette introduction ou la remplacer par une phrase neutre et honnête. Ne jamais lister des ingrédients qui ne figurent pas dans toutes les galettes de la section.
+
+### Problème 4 — Des doublons non justifiés dans les Classiques
+
+**Constat :** ŒUF - CHIPOLATAS apparaît à deux prix différents (5,00 € et 5,50 €). FROMAGE - BACON semble apparaître deux fois à 5,50 €. Aucune explication visible.
+**Impact :** Le client ne comprend pas la différence. Il perd confiance, hésite, ou prend le moins cher par prudence.
+**Correction recommandée :** Conserver une seule version par combinaison. Si une différence existe (quantité, ingrédient supplémentaire), l'expliquer en une courte mention.
+
+### Problème 5 — Les suppléments sont invisibles
+
+**Constat :** Œuf 1,50 €, légumes cuisinés 3,00 €, charcuterie 2,00 € — listés en petits caractères en bas de page après tous les prix.
+**Impact :** La grande majorité des clients ne les voit pas avant de commander. Ce sont des euros facilement ajoutables à chaque addition.
+**Correction recommandée :** Créer un encart "Personnalisez votre galette" visible, positionné juste après les Classiques ou les Complètes.
+
+---
+
+## 3. Les changements prêts à copier-coller
+
+| Élément actuel | Nouvelle version recommandée | Pourquoi |
+|---|---|---|
+| BEURRE — 2,20 € (1ère ligne) | À déplacer en fin de liste : *"Nature — pour les enfants, 2,20 €"* | Le 1er prix lu ancre toute la perception. 2,20 € tire vers le bas. |
+| Introduction Spécialités : *"Toutes cuisinées avec poireaux, champignons, saumon..."* | *"Nos créations — associations maison, ingrédients frais"* *(ou supprimer)* | L'intro actuelle est inexacte pour au moins 6 spécialités sur 14 |
+| ♥ LA BERGÈRE — Fromage de chèvre, salade | ♥ LA BERGÈRE — Fromage de chèvre, salade verte — notre classique recommandé | Le ♥ existe déjà, il faut juste expliquer pourquoi c'est recommandé |
+| L'ÉCOSSAISE — Saumon fumé, ciboulette | ✦ **L'ÉCOSSAISE** — Saumon fumé, ciboulette *(+ crème si présente, à confirmer)* — Notre galette signature | 1ère position + encadré + "signature" = percée immédiate |
+| LA NORVÉGIENNE — Saumon fumé, poireaux à la crème | LA NORVÉGIENNE — Saumon fumé, poireaux à la crème — À partager ou pas | "À partager ou pas" crée de la connivence sans rien changer |
+| LA PAYSANNE — Bacon, poireaux à la crème, fromage de chèvre | LA PAYSANNE — Bacon, poireaux à la crème, fromage de chèvre *(si fondants : "poireaux fondants à la crème", à confirmer)* | Ajouter une texture précise valorise sans inventer |
+| Suppléments (bas de page) | **Encart visible : Personnalisez votre galette** — Charcuterie +2 € \| Légumes cuisinés +3 € \| Œuf +1,50 € | Positionné après les Classiques, taux d'ajout multiplié |
+| ŒUF - CHIPOLATAS (× 2 à prix différents) | Une seule entrée — ou explication de la différence en mention courte | Doublon sans justification = méfiance client |
+
+---
+
+## 4. Plat signature recommandé
+
+**Plat recommandé :** L'ÉCOSSAISE — Saumon fumé, ciboulette (9,00 €)
+**Pourquoi :** C'est la galette au prix le plus élevé avec un ingrédient immédiatement perçu comme noble. En la plaçant en tête des Spécialités, elle crée un ancrage prix : les galettes à 6,50-7,50 € deviennent accessibles par comparaison. Elle représente aussi votre savoir-faire au-delà du classique Jambon-Œuf-Fromage.
+**Mise en avant :** Première position en Spécialités + encadré fin ou fond légèrement différent + symbole ✦.
+**Texte prêt à intégrer *(à compléter avec les ingrédients exacts si crème ou autre présente)* :**
+
+> ✦ **L'ÉCOSSAISE** — Saumon fumé, ciboulette *(ajouter : crème / garniture réelle si applicable)*. Notre galette signature. 9,00 €
+
+---
+
+## 5. Desserts : plan pour vendre plus
+
+La carte visible ne présente pas de section desserts (crêpes sucrées). Si vous en proposez :
+
+- Ne jamais les lister sans description. *"Crêpe beurre sucre"* et *"Crêpe au beurre, sucre fin"* ne se vendent pas au même prix perçu.
+- Si vous avez une crêpe signature sucrée (caramel, spécialité maison), la placer en premier avec une ligne descriptive.
+- Ajouter un renvoi en bas de la carte salée : *"Et pour finir — nos crêpes sucrées. Demandez la carte."*
+- Déposer la carte desserts en même temps que la carte salée — ne pas attendre que le client la demande.
+- Proposer verbalement : *"On finit avec une crêpe sucrée ? Je vous apporte la carte."*
+
+---
+
+## 6. Actions concrètes pour augmenter le ticket moyen
+
+| Action | Exemple précis | Effort | Impact attendu |
+|---|---|---|---|
+| Remonter L'Écossaise en tête des Spécialités + encadré ✦ | Permuter les positions, ajouter le symbole | 10 min | Les galettes à 9 € vues en premier par tous les clients |
+| Supprimer ou déplacer BEURRE 2,20 € | Fin de liste ou retrait | 5 min | Ancrage prix plus élevé dès la 1ère ligne lue |
+| Corriger l'introduction des Spécialités | Supprimer ou remplacer par une phrase neutre | 5 min | Suppression d'une fausse promesse visible |
+| Créer l'encart suppléments visible | Après les Classiques, avant les Complètes | 15 min | Hausse directe du ticket par table |
+| Supprimer les doublons Classiques | ŒUF-CHIPOLATAS × 1 seule version | 10 min | Carte lisible, plus de confiance |
+
+---
+
+## 7. Pricing et présentation des prix
+
+- La colonne de prix à droite est standard en crêperie — ce n'est pas prioritaire à changer. En revanche, le premier prix lu doit être au minimum à 3-4 €. Le BEURRE à 2,20 € est l'anomalie à corriger.
+- Les Complètes sont toutes à 6,50 € — cohérent. Envisager de différencier légèrement (ex : Jambon-Œuf-Fromage à 6,50 € / Andouille-Œuf-Fromage à 6,80 € si l'andouille a un coût matière supérieur) uniquement si cela correspond à votre réalité. Ne pas modifier les prix sans raison concrète.
+- L'écart entre 2,20 € (BEURRE) et 9,00 € (ÉCOSSAISE) est de 6,80 €. Une fois le BEURRE retiré, votre prix plancher monte à 3,20 € — l'écart perçu avec 9 € est déjà plus acceptable.
+- Ne pas créer de galette à 11-12 € pour "ancrer" si votre positionnement global ne le supporte pas. L'Écossaise à 9 € est déjà votre ancrage naturel.
+
+---
+
+## 8. Nouvelle organisation recommandée de la carte
+
+**Structure recommandée :**
+
+1. **NOS SPÉCIALITÉS** ← en premier — c'est votre identité, pas votre fin de carte
+   - ✦ L'ÉCOSSAISE (9 €) — encadrée, en tête
+   - LA NORVÉGIENNE (9 €)
+   - LA PAYSANNE (8,50 €)
+   - LES 3 FROMAGES (7,80 €)
+   - *(les autres spécialités ensuite)*
+2. **NOS COMPLÈTES** ← avec 1 mise en avant visuelle sur la Jambon-Œuf-Fromage classique
+3. **NOS CLASSIQUES** ← sans BEURRE en 1ère position, sans doublons
+4. **Encart PERSONNALISEZ VOTRE GALETTE** ← suppléments visibles, après les Classiques
+
+Ce qui doit être **encadré :** L'Écossaise + encart suppléments.
+Ce qui doit être **corrigé :** introduction Spécialités.
+Ce qui doit être **retiré ou déplacé :** BEURRE 2,20 € en tête + doublons.
+Ce qui doit être **déplacé :** Spécialités de la fin vers le début de carte.
+
+---
+
+## 9. Phrases serveur prêtes à utiliser
+
+- *"Notre galette signature c'est L'Écossaise — saumon fumé, c'est notre meilleure vente. Je vous la conseille."*
+- *"Si vous hésitez dans les Classiques, la Complète Jambon-Œuf-Fromage c'est notre valeur sûre."*
+- *"On peut personnaliser votre galette — un supplément charcuterie ou légumes, c'est 2 ou 3 €."*
+- *"La Paysanne avec le fromage de chèvre et les poireaux, ça plaît beaucoup — si vous aimez le chèvre."*
+- *"Et pour finir, on a des crêpes sucrées — je vous apporte la carte desserts ?"*
+
+---
+
+## 10. Plan d'action sur 7 jours
+
+| Jour | Action | Objectif |
+|---|---|---|
+| Jour 1 | Corriger l'intro Spécialités + supprimer les doublons | Carte sans erreur factuelle |
+| Jour 2 | Déplacer BEURRE en fin de liste ou le retirer | Ancrage prix plus élevé dès la 1ère ligne |
+| Jour 3 | Remonter L'Écossaise et La Norvégienne en tête des Spécialités + encadré ✦ | Galettes premium vues en premier |
+| Jour 4 | Créer l'encart suppléments visible après les Classiques | Hausse du ticket par extras ajoutés |
+| Jour 5 | Briefer l'équipe sur les 5 phrases de vente | Vente active des galettes signature |
+| Jour 6 | Mise en service de la carte corrigée | Premier test réel |
+| Jour 7 | Observer : L'Écossaise commandée plus souvent ? Suppléments ajoutés ? Ticket en hausse ? | Mesurer, ajuster |
+
+---
+
+## 11. Résumé final
+
+**Les 3 changements prioritaires :**
+1. Corriger l'introduction des Spécialités — c'est la seule erreur factuelle de la carte, elle nuit à la crédibilité
+2. Remonter L'Écossaise en tête des Spécialités avec un encadré ✦ — votre galette à 9 € doit être vue en premier
+3. Créer l'encart suppléments visible après les Classiques — c'est du chiffre d'affaires à chaque table sans rien changer à la cuisine
+
+**Ce que vous pouvez attendre :** plus de commandes sur les galettes à 9 €, plus d'extras ajoutés, et une carte qui inspire davantage confiance. Sans données de vente actuelles, impossible de quantifier — mais ces corrections agissent sur des comportements d'achat identifiés et documentés.
+
+**La première action à faire dès demain :** corriger l'introduction des Spécialités. 5 minutes. C'est la seule erreur visible — elle doit disparaître avant tout le reste.
+
+---
+
+*Rapport Carte Blanche — En cours de finalisation*`,
+  },
 ]
